@@ -7,11 +7,16 @@ export default function RootLayout() {
   const { isSignedIn, isLoaded } = useUser();
 
 
-  
+  if(!isLoaded){
+    console.log("Entrou no loaded --------------------");
+    return null;
+  }
 
   if(!isSignedIn){
     return <Redirect href={"/sign-in"} />
   }
+
+  
 
  
 
