@@ -14,7 +14,7 @@ export default function Page() {
 
   const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [buttonLoading, setButtonLoading] = useState(false);
   const [error, setError] = useState(null)
 
@@ -73,7 +73,7 @@ export default function Page() {
               style={styles.loadingIndicator}
             />
           )}
-          <Image source={require("../../assets/images/padeiro.png")} style={styles.illustration2}
+          <Image source={require("../../assets/images/padeiro.png")} style={[styles.illustration2,{ opacity: loading ? 0 : 1 }]}
             contentFit="contain"
             onLoadStart={() => setLoading(true)}
             onLoadEnd={() => setLoading(false)}

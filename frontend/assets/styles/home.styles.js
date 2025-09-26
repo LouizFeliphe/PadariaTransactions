@@ -153,13 +153,16 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   categoryIconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: "#F5F5F5",
+    width: 30,
+    height: 30,
     justifyContent: "center",
     alignItems: "center",
     marginRight: 12,
+  },
+  iconPersonalized:{
+    width: 35,
+    height: 35,
+    resizeMode: "contain",
   },
   transactionLeft: {
     flex: 1,
