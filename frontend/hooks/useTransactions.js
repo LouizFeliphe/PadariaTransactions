@@ -1,12 +1,7 @@
-//arquivo customizado react hook para pegar as transações do usuário logado
-
+//arquivo para pegar as transações do usuário logado
 import {useCallback, useState} from "react";
 import { Alert } from "react-native";
-
-const API_URL = "http://192.168.100.7:5001/api"; // Substitua pela URL da sua API
-
-
-
+import API_URL from "../lib/api.js";
 
 export default function useTransactions (userId) {
     const [transacoes, setTransacoes] = useState([]);
@@ -17,12 +12,8 @@ export default function useTransactions (userId) {
         balance: 0,
     });
   
-    //useCallback para memorizar a função e evitar recriações desnecessárias
-    //e também para evitar loops infinitos no useEffect
     const fetchTransacoes = useCallback(async () => {
         try{
-            console.log(`fetchTransacoes userId: ${API_URL}/transactions/${userId}`);
-            
             const resposta = await fetch(`${API_URL}/transactions/${userId}`)
             const data = await resposta.json();
             setTransacoes(data); 

@@ -8,7 +8,7 @@ import { formatDate } from "../lib/utils.js";
 const CATEGORY_ICONS = {
   laticinio: require("../assets/images/leite.png"),
   frios: require("../assets/images/salame.png"),
-  pao: require("../assets/images/trigo.png"),
+  paes: require("../assets/images/trigo.png"),
   doce: require("../assets/images/doce.png"),
   refrigerante: require("../assets/images/refrigerante.png"),
   chips: require("../assets/images/chips.png"),

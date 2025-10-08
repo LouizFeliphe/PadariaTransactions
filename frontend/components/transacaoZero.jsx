@@ -15,13 +15,13 @@ const NoTransactionsFound = () => {
         color={COLORS.textLight}
         style={styles.emptyStateIcon}
       />
-      <Text style={styles.emptyStateTitle}>No transactions yet</Text>
+      <Text style={styles.emptyStateTitle}>Nenhuma transação ainda</Text>
       <Text style={styles.emptyStateText}>
-        Start tracking your finances by adding your first transaction
+        Comece a vigiar suas economias por adicionar sua primeira transação
       </Text>
-      <TouchableOpacity style={styles.emptyStateButton} onPress={() => router.push("/create")}>
+      <TouchableOpacity style={styles.emptyStateButton} onPress={() => router.push("/criar")}>
         <Ionicons name="add-circle" size={18} color={COLORS.white} />
-        <Text style={styles.emptyStateButtonText}>Add Transaction</Text>
+        <Text style={styles.emptyStateButtonText}>Adicionar Transação</Text>
       </TouchableOpacity>
     </View>
   );

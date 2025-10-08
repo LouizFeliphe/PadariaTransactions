@@ -1,5 +1,5 @@
 import { useUser } from '@clerk/clerk-expo'
-import { router } from 'expo-router'
+import { router} from 'expo-router'
 import { Text, View, Image, TouchableOpacity, FlatList, Alert, RefreshControl } from 'react-native'
 import { SignOutButton } from '../../components/signOutButton.jsx'
 import useTransactions from '../../hooks/useTransactions.js'
@@ -23,13 +23,10 @@ export default function Page() {
     setRefreshing(false);
   }
 
+
   useEffect(() => {
     carregarDado();
   }, [carregarDado]);
-
-  console.log("usuarioID: ", user.id);
-  console.log("Transações:", transacoes);
-  console.log("Sumário:", sumario);
 
   if (isloading && !refreshing) return <CirculoCarregamentoPagina />
 
@@ -58,7 +55,7 @@ export default function Page() {
           </View>
           {/* LADO DIREITO */}
           <View style={styles.headerRight}>
-            <TouchableOpacity style={styles.addButton} onPress={() => router.push("/create")}>
+            <TouchableOpacity style={styles.addButton} onPress={() => router.push("/criar")}>
               <Ionicons name='add' size={20} color="#FFF"/>
               <Text style={styles.addButtonText}>Adicionar</Text>
             </TouchableOpacity>

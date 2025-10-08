@@ -1,4 +1,3 @@
-// styles/create.styles.js
 import { StyleSheet } from "react-native";
 import { COLORS } from "./colors.js";
 
@@ -107,6 +106,11 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     backgroundColor: COLORS.white,
   },
+  iconPersonalized:{
+    width: 35,
+    height: 35,
+    resizeMode: "contain",
+  },
   inputIcon: {
     marginHorizontal: 12,
   },
@@ -150,6 +154,7 @@ export const styles = StyleSheet.create({
   categoryButtonText: {
     color: COLORS.text,
     fontSize: 14,
+    paddingLeft: 7,
   },
   categoryButtonTextActive: {
     color: COLORS.white,

@@ -5,7 +5,6 @@ import { Ionicons } from '@expo/vector-icons'
 import { COLORS } from '@/assets/styles/colors.js'
 
 export const SignOutButton = () => {
-  // Use `useClerk()` to access the `signOut()` function
   const { signOut } = useClerk()
   const handleSignOut = async () => {
     Alert.alert("Confirmação", "Tem certeza que deseja sair?", [

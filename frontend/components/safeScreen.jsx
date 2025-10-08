@@ -1,6 +1,4 @@
-import { Link } from "expo-router";
-import { Text, View, StyleSheet } from "react-native";
-import { Image } from "expo-image";
+import { View} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { COLORS } from "../assets/styles/colors.js";
 
