@@ -17,7 +17,7 @@ export async function initDB() {
             created_at DATE NOT NULL DEFAULT CURRENT_DATE
         )`
         
-        console.log("Databse is running");
+        console.log("Database está on");
         
     }catch(err){
         console.log("Erro initializing database", err);

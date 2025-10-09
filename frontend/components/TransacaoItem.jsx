@@ -19,6 +19,7 @@ const CATEGORY_ICONS = {
 };
 
 export const ItemFuncao = ({ item, onDelete }) => {
+  
   const isIncome = parseFloat(item.amount) > 0;
   const iconName = CATEGORY_ICONS[item.category] || require("../assets/images/preco.png");
 

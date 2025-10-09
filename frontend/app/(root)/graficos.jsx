@@ -12,6 +12,7 @@ import MeuGraficoPizza from "../../components/pizzaGrafico.jsx";
 import MeuGraficoBarra from "../../components/barraGrafico.jsx"
 
 const GraficosDados = () => {
+
     const { user } = useUser()
     const { transacoes, carregarDado, sumario } = useTransactions(user?.id);
     const [transacoesFiltradas, setTransacoesFiltradas] = useState([])
@@ -164,12 +165,14 @@ const GraficosDados = () => {
     return (
 
         <View style={[styles.balanceCard, { paddingTop: 12, marginTop: 15}]}>
+            {/* Botao de voltar */}
             <View style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end', marginBottom: 70 }}>
                 <TouchableOpacity style={{flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end', marginBottom: 70 }} 
                 onPress={() => router.back()}>
                     <Ionicons name='arrow-undo-circle-outline' size={40} color="#000000ff" />  
                 </TouchableOpacity>
             </View>
+            {/* Graficos estão aqui ! */}
             <View style={[transacoesFiltradas.length > 0 && {
                 flex: 1,
                 justifyContent: "center",
@@ -181,7 +184,8 @@ const GraficosDados = () => {
                     : (<GraficoVazio categoria={categoriaAplicada} transacoes={transacoesFiltradas}/>)}
 
 
-            </View>
+            </View>       
+            {/* Caixas de seleção */}
             <View style={[styles.balanceCard, { paddingTop: 20, marginTop: 100 }]}>
                 <View style={{ flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
                     <DropDownPicker

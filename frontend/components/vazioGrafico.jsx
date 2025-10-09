@@ -6,10 +6,6 @@ import { COLORS } from "../assets/styles/colors.js";
 
 const GraficoVazio = ({categoria, transacoes}) => {
 
-  console.log(categoria);
-  console.log(transacoes);
-  
-  
   return (
     <View style={styles.emptyState}>
       <Ionicons
@@ -25,4 +21,5 @@ const GraficoVazio = ({categoria, transacoes}) => {
     </View>
   );
 };
+
 export default GraficoVazio;

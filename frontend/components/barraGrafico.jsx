@@ -65,7 +65,6 @@ const MeuGraficoBarra = ({ transacoes, periodo, categoria }) => {
   //   const ganhos = [];
   //   const gastos = [];
   //   const dias = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"];
-
   //   transacoes.forEach(item => {
   //     if ("ganho" in item) {
   //       ganhos.push(item);
@@ -73,24 +72,16 @@ const MeuGraficoBarra = ({ transacoes, periodo, categoria }) => {
   //       gastos.push(item);
   //     }
   //   });
-
   //   //Aqui entra os ganhos
   //   if (isGanhoOuGasto) {
-
   //     let dadosFormatados;
-
   //     const dadosFiltrados = ganhos.filter(
   //       (item) => item.mes === atualMes && item.ano === atualAno
   //     );
-
-
   //     if (periodo === "weekly") {
-
   //       const ganhosDaSemana = dadosFiltrados.filter(item => item.semana === atualSemana);
-
   //       console.log("DADOS FILTRADOS:", dadosFiltrados);
   //       console.log("GANHOS DA SEMANA:", ganhosDaSemana, "atualSemana:", atualSemana);
-
   //         dadosFormatados = dias.map((dia, i) => {
   //   
   //       const itensDoDia = ganhosDaSemana.filter(item => {
@@ -98,35 +89,26 @@ const MeuGraficoBarra = ({ transacoes, periodo, categoria }) => {
   //         const diaSemana = data.getDay(); // 0 = Domingo, 1 = Segunda...
   //         return diaSemana === 0 ? 6 : diaSemana - 1 === i;
   //       });
-
   //             const total = itensDoDia.reduce((soma, it) => {
   //         
   //         return soma + (parseFloat(it.ganho || it.gasto) || 0);
   //       }, 0);
-
   //       return {
   //         value: total,
   //         frontColor: isGanhoOuGasto ? "#d4ff00" : "#ff8000ff",
   //         label: dia,
   //       };
   //     });
-
   //     
-
-
   //     } else {
-
   //       
   //       dadosFormatados = dadosFiltrados.map(item => ({
   //         ...item,
   //         value: item.ganho,
   //         frontColor: "#d4ff00",
   //       }))
-
   //     }
-
-  //     setTotal(dadosFormatados.reduce((acc, item) => acc + item.value, 0))
-
+  //     setTotal(dadosFormatados.reduce((acc, item) => acc + item.value, 0)
   //     setDadosGraficosGanho(dadosFormatados.map((item, index) => ({
   //       ...item,
   //       // mostra o valor em cima da barra só se ela estiver selecionada
@@ -144,19 +126,12 @@ const MeuGraficoBarra = ({ transacoes, periodo, categoria }) => {
   //   }
   //   //Aqui entra os gastos
   //   else {
-
   //     let dadosFormatados;
-
   //     const dadosFiltrados = gastos.filter(
   //       (item) => item.mes === atualMes && item.ano === atualAno
   //     );
-
-
   //     if (periodo === "weekly") {
-
   //       const gastosDaSemana = dadosFiltrados.filter(item => item.semana === atualSemana);
-
-
   //         dadosFormatados = dias.map((dia, i) => {
   //   
   //       const itensDoDia = gastosDaSemana.filter(item => {
@@ -164,38 +139,26 @@ const MeuGraficoBarra = ({ transacoes, periodo, categoria }) => {
   //         const diaSemana = data.getDay(); // 0 = Domingo, 1 = Segunda...
   //         return diaSemana === 0 ? 6 : diaSemana - 1 === i;
   //       });
-
   //             const total = itensDoDia.reduce((soma, it) => {
   //         
   //         return soma + (parseFloat(it.ganho || it.gasto) || 0);
   //       }, 0);
-
   //       return {
   //         value: total,
   //         frontColor: isGanhoOuGasto ? "#d4ff00" : "#ff8000ff",
   //         label: dia,
   //       };
   //     });
-
   //     console.log("GANHOS DA SEMANA (por dia):", dadosFormatados)
-
-
-
-
-
   //     } else {
-
   //       
   //       dadosFormatados = dadosFiltrados.map(item => ({
   //         ...item,
   //         value: item.gasto,
   //         frontColor: "#e27107ff",
   //       }))
-
   //     }
-
   //     setTotal(dadosFormatados.reduce((acc, item) => acc + item.value, 0))
-
   //     setDadosGraficosGasto(dadosFormatados.map((item, index) => ({
   //       ...item,
   //       
@@ -211,8 +174,6 @@ const MeuGraficoBarra = ({ transacoes, periodo, categoria }) => {
   //     })))
   //     setDadosGraficosGanho([]);
   //   }
-
-
   // }, [atualAno, atualMes, indexBarraSelecionada, isGanhoOuGasto, transacoes, periodo, atualSemana])
 
   //O codigo todo comentado acima foi o código que eu fiz sozinho, aprendendo com os tutoriais do youtube. O Código abaixo é a versão otimizada, muito mais estilosa e bonita. Apenas quis deixar de recordação o quanto o código acima é redundante e "tenebroso".
@@ -226,7 +187,7 @@ const MeuGraficoBarra = ({ transacoes, periodo, categoria }) => {
     // separa apenas transações do tipo certo
     const dadosBase = transacoes.filter(item => tipo in item);
 
-    // filtra por mês e ano atual
+    // filtra por mês e ano 
     const dadosFiltrados = dadosBase.filter(
       (item) => item.mes === atualMes && item.ano === atualAno
     );

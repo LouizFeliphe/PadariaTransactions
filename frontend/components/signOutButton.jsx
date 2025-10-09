@@ -6,6 +6,7 @@ import { COLORS } from '@/assets/styles/colors.js'
 
 export const SignOutButton = () => {
   const { signOut } = useClerk()
+  
   const handleSignOut = async () => {
     Alert.alert("Confirmação", "Tem certeza que deseja sair?", [
       {

@@ -5,6 +5,7 @@ import { COLORS } from "../assets/styles/colors.js";
 import { useRouter } from "expo-router";
 
 const NoTransactionsFound = () => {
+  
   const router = useRouter();
 
   return (

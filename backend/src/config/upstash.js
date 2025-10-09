@@ -5,7 +5,7 @@ import "dotenv/config";
 
 const connectionRateLimite = new Ratelimit({
     redis: Redis.fromEnv(),
-    limiter: Ratelimit.slidingWindow(40, "60 s"), //10 requests per 1 minute
+    limiter: Ratelimit.slidingWindow(40, "60 s"), // 40 requisições por minuto
 });
 
 export default connectionRateLimite;

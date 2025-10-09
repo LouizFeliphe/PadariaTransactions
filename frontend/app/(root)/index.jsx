@@ -1,28 +1,27 @@
 import { useUser } from '@clerk/clerk-expo'
 import { router} from 'expo-router'
 import { Text, View, Image, TouchableOpacity, FlatList, Alert, RefreshControl } from 'react-native'
-import { SignOutButton } from '../../components/signOutButton.jsx'
 import useTransactions from '../../hooks/useTransactions.js'
 import { useEffect,useState } from 'react'
-import {ItemFuncao} from '../../components/TransacaoItem.jsx'
-import  SaldoCard from '../../components/saldoCard.jsx'
-import CirculoCarregamentoPagina from '../../components/circuloCarregamentoPagina.jsx'
 import { styles } from '@/assets/styles/home.styles.js'
 import { Ionicons } from '@expo/vector-icons'
 import TransacaoVazia from '../../components/transacaoZero.jsx'
-
+import  SaldoCard from '../../components/saldoCard.jsx'
+import CirculoCarregamentoPagina from '../../components/circuloCarregamentoPagina.jsx'
+import {ItemFuncao} from '../../components/TransacaoItem.jsx'
+import { SignOutButton } from '../../components/signOutButton.jsx'
 
 export default function Page() {
   const { user} = useUser()
   const { transacoes, carregarDado, isloading, sumario, deletarTransacao } = useTransactions(user?.id);
   const [refreshing, setRefreshing] = useState(false);
 
+  //Atualiza a lista
   const onRefresh = async () => {
     setRefreshing(true);
     await carregarDado();
     setRefreshing(false);
   }
-
 
   useEffect(() => {
     carregarDado();
@@ -69,7 +68,7 @@ export default function Page() {
         </View>
       </View>
 
-      {/* Flatlist usado para renderizar listas longas com perfomance */ }
+      {/* Flatlist usado para renderizar a lista */ }
       <FlatList
       style={styles.transactionList}
       contentContainerStyle={styles.transactionListContent}

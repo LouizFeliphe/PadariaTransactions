@@ -9,10 +9,10 @@ import {
 import { useRouter } from "expo-router";
 import { useUser } from "@clerk/clerk-expo";
 import { useState } from "react";
-import  API_URL  from "../../lib/api.js";
 import { styles } from "../../assets/styles/create.styles.js";
 import { COLORS } from "../../assets/styles/colors.js";
 import { Ionicons } from "@expo/vector-icons";
+import useTransactions from "../../hooks/useTransactions.js";
 
 
 const CATEGORIES = [
@@ -30,49 +30,28 @@ const CATEGORIES = [
 
 const CreateScreen = () => {
   const router = useRouter();
-  const { user } = useUser();
-
+  const {user} = useUser();
+  const { isLoading, criarTransacao } = useTransactions(user?.id)
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isExpense, setIsExpense] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const handleCreate = async () => {
+  const criarTransacaoChamada = async () => {
     // validações
     if (!title.trim()) return Alert.alert("Error", "Por favor insira um título válido");
-    if (!amount || isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) {
-      Alert.alert("Error", "Por favor insira um valor válido");
-      return;
-    }
-
+    if (!amount || isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) return Alert.alert("Error", "Por favor insira um valor válido");
     if (!selectedCategory) return Alert.alert("Error", "Por favor selecione uma categoria");
 
-    setIsLoading(true);
     try {
+
       // Formata a quantia (negativo para gastos, positvo para renda)
-      const formattedAmount = isExpense
+      const quantidadeFormatada = isExpense
         ? -Math.abs(parseFloat(amount.replace(",", ".")))
         : Math.abs(parseFloat(amount.replace(",", ".")));
-
-      const response = await fetch(`${API_URL}/transactions`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_id: user.id,
-          title,
-          amount: formattedAmount,
-          category: selectedCategory,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.log(errorData);
-        throw new Error(errorData.error || "Falha ao criar transação");
-      }
+      
+      // chamada para a função que irá criar a transação no banco de dados
+      criarTransacao(quantidadeFormatada,title,selectedCategory)
 
       Alert.alert("Sucesso", "Transação criada com sucesso");
       setAmount("");
@@ -82,8 +61,6 @@ const CreateScreen = () => {
     } catch (error) {
       Alert.alert("Error", error.message || "Falha ao criar transação");
       console.error("Erro ao criar transação:", error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -97,7 +74,7 @@ const CreateScreen = () => {
         <Text style={styles.headerTitle}>Nova transação</Text>
         <TouchableOpacity
           style={[styles.saveButtonContainer, isLoading && styles.saveButtonDisabled]}
-          onPress={handleCreate}
+          onPress={criarTransacaoChamada}
           disabled={isLoading}
         >
           <Text style={styles.saveButton}>{isLoading ? "Salvando..." : "Salvar"}</Text>
@@ -186,12 +163,6 @@ const CreateScreen = () => {
               onPress={() => setSelectedCategory(category.name)}
             >
                 <Image source={category.icon} style={[styles.iconPersonalized,{color: selectedCategory === category.name ? COLORS.white : COLORS.text}]}/>
-              {/* <Ionicons
-                name={category.icon}
-                size={20}
-                color={selectedCategory === category.name ? COLORS.white : COLORS.text}
-                style={styles.categoryIcon}
-              /> */}
               <Text
                 style={[
                   styles.categoryButtonText,
